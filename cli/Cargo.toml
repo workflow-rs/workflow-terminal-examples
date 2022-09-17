@@ -8,5 +8,6 @@ crate-type = ["cdylib", "lib"]
 
 [dependencies]
 workflow-log = { path = "../../workflow-log" }
+workflow-core = { path = "../../workflow-core" }
 workflow-terminal = {path = "../../workflow-terminal"}
 async-trait = "0.1.57"
