@@ -49,6 +49,9 @@ impl ExampleCli {
 //     }
 // }
 
+// unsafe impl Send for ExampleCli {}
+// unsafe impl Sync for ExampleCli {}
+
 #[async_trait]
 impl Cli for ExampleCli {
 
