@@ -61,7 +61,18 @@ impl Cli for ExampleCli {
         let argv = parse(&cmd);
         match argv[0].as_str() {
             "help" => {
-                term.writeln("\n\rCommands:\n\r\thelp - this list\n\r\thello - simple terminal text output\n\r\ttest - workflow_log!() macro test\n\r\texit - exits example (native only)\n\r");
+                let commands = vec![
+                    "help - this list",
+                    "hello - simple text output",
+                    "test - log_trace!() macro output",
+                    "history - list command history",
+                    "sleep - sleep for 5 seconds",
+                    "ask - ask user for text input (with echo)",
+                    "pass - ask user for password text input (no echo)",
+                    "exit - exit terminal",
+                ];
+                term.writeln("\n\rCommands:\n\r");
+                term.writeln("\t".to_string()+&commands.join("\n\r\t")+"\n\r");
             },
             "hello" => {
                 term.writeln("hello back to you!");
