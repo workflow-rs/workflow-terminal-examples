@@ -5,7 +5,6 @@ use async_trait::async_trait;
 use workflow_terminal::Terminal;
 // use workflow_terminal::Options;
 use workflow_terminal::Result;
-use workflow_terminal::CliResult;
 use workflow_terminal::Cli;
 use workflow_terminal::parse;
 use workflow_log::*;
@@ -57,7 +56,7 @@ impl Cli for ExampleCli {
         Ok(())
     }
 
-    async fn digest(&self, term : Arc<Terminal>, cmd: String) -> CliResult<()> {
+    async fn digest(&self, term : Arc<Terminal>, cmd: String) -> Result<()> {
         let argv = parse(&cmd);
         match argv[0].as_str() {
             "help" => {
@@ -111,7 +110,7 @@ impl Cli for ExampleCli {
         Ok(())
     }
 
-    async fn complete(&self, _term : Arc<Terminal>, cmd : String) -> CliResult<Vec<String>> {
+    async fn complete(&self, _term : Arc<Terminal>, cmd : String) -> Result<Vec<String>> {
         let argv = parse(&cmd);
         if argv.len() == 0 { return Ok(vec![]) }
         let last = argv.last().unwrap();
